@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// src/server.ts
 const express_1 = __importDefault(require("express"));
 require("reflect-metadata");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -19,7 +18,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const app = (0, express_1.default)();
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
-app.use(body_parser_1.default.json()); // Add this line
+app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 // Configurações de CORS
 const allowedOrigins = [
@@ -32,17 +31,18 @@ const allowedOrigins = [
 ];
 const allowedMethods = ['GET', 'POST', 'PUT', 'DELETE'];
 app.use((0, cors_1.default)({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: allowedMethods,
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 }));
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
 (0, database_1.connectToDatabase)();
 (0, database_1.connectToDatabase2)();
 app.get('/', (_req, res) => {
@@ -70,7 +70,7 @@ app.use((err, req, res, next) => {
     console.error('Unhandled error:', err.stack);
     res.status(500).send('Something broke!');
 });
-const PORT = process.env.PORT || 3000; // Alterar a porta para 3000 ou outra disponível
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

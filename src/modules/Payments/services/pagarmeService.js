@@ -19,7 +19,7 @@ console.log('PAGARME_API_KEY:', PAGARME_API_KEY); // Verifica a chave de API
 const pagarmeService = {
     createPlan(name, amount, interval, intervalCount) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
+            var _a;
             try {
                 console.log('Tentando criar plano com os seguintes dados:', { name, amount, interval, intervalCount });
                 const isAnnual = interval.toLowerCase() === 'year';
@@ -48,13 +48,13 @@ const pagarmeService = {
             catch (error) {
                 console.error('Erro ao criar plano:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
-                throw ((_b = error.response) === null || _b === void 0 ? void 0 : _b.data) || error.message;
+                throw new Error('Erro ao criar plano. Por favor, tente novamente.');
             }
         });
     },
     createCustomer(name, email, document, phone, billing_address) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
+            var _a;
             try {
                 if (!name || !email || !document || !phone || !billing_address) {
                     throw new Error('Dados do cliente incompletos');
@@ -85,13 +85,13 @@ const pagarmeService = {
             catch (error) {
                 console.error('Erro ao criar cliente:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
-                throw ((_b = error.response) === null || _b === void 0 ? void 0 : _b.data) || error.message;
+                throw new Error('Erro ao criar cliente. Por favor, tente novamente.');
             }
         });
     },
     createCard(customerId, number, holder_name, exp_month, exp_year, cvv, billing_address) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
+            var _a;
             try {
                 console.log('Dados enviados para criar cartão:', { customerId, number, holder_name, exp_month, exp_year, cvv, billing_address });
                 const response = yield axios_1.default.post(`${PAGARME_URL}/customers/${customerId}/cards`, {
@@ -112,14 +112,32 @@ const pagarmeService = {
             }
             catch (error) {
                 console.error('Erro ao criar cartão:', error);
-                console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
-                throw ((_b = error.response) === null || _b === void 0 ? void 0 : _b.data) || error.message;
+                const errorMessage = ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message;
+                console.error('Detalhes do erro:', errorMessage);
+                // Tratamento de recusas reais baseadas no refuse_reason
+                if (error.response && error.response.data && error.response.data.refuse_reason) {
+                    switch (error.response.data.refuse_reason) {
+                        case 'insufficient_funds':
+                            throw new Error('Fundos insuficientes.');
+                        case 'expired_card':
+                            throw new Error('Cartão expirado.');
+                        case 'acquirer':
+                            throw new Error('Erro no adquirente.');
+                        case 'antifraud':
+                            throw new Error('Transação recusada por antifraude.');
+                        default:
+                            throw new Error('Transação recusada por motivo desconhecido.');
+                    }
+                }
+                else {
+                    throw new Error('Erro ao criar cartão. Por favor, tente novamente.');
+                }
             }
         });
     },
     getPlans() {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
+            var _a;
             try {
                 const response = yield axios_1.default.get(`${PAGARME_URL}/plans`, {
                     headers: {
@@ -133,13 +151,13 @@ const pagarmeService = {
             catch (error) {
                 console.error('Erro ao buscar planos:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
-                throw ((_b = error.response) === null || _b === void 0 ? void 0 : _b.data) || error.message;
+                throw new Error('Erro ao buscar planos. Por favor, tente novamente.');
             }
         });
     },
     createSubscription(customerId, planId, cardId, finalAmount, planName) {
         return __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
+            var _a;
             try {
                 console.log('Dados enviados para criar assinatura:', {
                     customerId,
@@ -188,7 +206,7 @@ const pagarmeService = {
             catch (error) {
                 console.error('Erro ao criar assinatura:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
-                throw ((_b = error.response) === null || _b === void 0 ? void 0 : _b.data) || error.message;
+                throw new Error('Erro ao criar assinatura. Por favor, tente novamente.');
             }
         });
     },
@@ -206,9 +224,23 @@ const pagarmeService = {
             }
             catch (error) {
                 console.error('Erro ao buscar plano ativo:', error);
-                throw error;
+                throw new Error('Erro ao buscar plano ativo. Por favor, tente novamente.');
             }
         });
     },
+    handleRefuseReason(refuseReason) {
+        switch (refuseReason) {
+            case 'insufficient_funds':
+                throw new Error('Fundos insuficientes.');
+            case 'expired_card':
+                throw new Error('Cartão expirado.');
+            case 'acquirer':
+                throw new Error('Erro no adquirente.');
+            case 'antifraud':
+                throw new Error('Transação recusada por antifraude.');
+            default:
+                throw new Error('Transação recusada por motivo desconhecido.');
+        }
+    }
 };
 exports.default = pagarmeService;

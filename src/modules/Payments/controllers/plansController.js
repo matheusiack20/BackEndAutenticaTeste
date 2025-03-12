@@ -25,7 +25,7 @@ const plansController = {
             }
             catch (error) {
                 console.error('Erro ao criar plano:', error);
-                res.status(500).json({ message: 'Erro ao criar plano', error: error.message });
+                res.status(500).json({ message: 'Erro ao criar plano', error: 'Erro interno do servidor' });
             }
         });
     },
@@ -46,7 +46,7 @@ const plansController = {
             catch (error) {
                 console.error('Erro ao criar cliente:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message); // Adicione este log
-                res.status(500).json({ message: 'Erro ao criar cliente', error: error.message });
+                res.status(500).json({ message: 'Erro ao criar cliente', error: 'Erro interno do servidor' });
             }
         });
     },
@@ -66,7 +66,7 @@ const plansController = {
             catch (error) {
                 console.error('Erro ao criar cartão:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message); // Adicione este log
-                res.status(500).json({ message: 'Erro ao criar cartão', error: error.message });
+                res.status(500).json({ message: 'Erro ao criar cartão', error: 'Erro interno do servidor' });
             }
         });
     },
@@ -86,7 +86,7 @@ const plansController = {
             }
             catch (error) {
                 console.error('Erro ao buscar planos:', error);
-                res.status(500).json({ message: 'Erro ao buscar planos', error: error.message });
+                res.status(500).json({ message: 'Erro ao buscar planos', error: 'Erro interno do servidor' });
             }
         });
     },
@@ -125,7 +125,7 @@ const plansController = {
             catch (error) {
                 console.error('Erro ao criar assinatura:', error);
                 console.error('Detalhes do erro:', ((_a = error.response) === null || _a === void 0 ? void 0 : _a.data) || error.message);
-                res.status(500).json({ message: 'Erro ao criar assinatura', error: error.message });
+                res.status(500).json({ message: 'Erro ao criar assinatura', error: 'Erro interno do servidor' });
             }
         });
     },
