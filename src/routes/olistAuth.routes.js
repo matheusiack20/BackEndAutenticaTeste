@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.olistAuthRouter = void 0;
+const express_1 = require("express");
+const olistAuthController_1 = require("../modules/olistAuth/controllers/olistAuthController");
+const olistCreateProductController_1 = require("../modules/olistCreateProduct/controllers/olistCreateProductController");
+const olistAuthRouter = (0, express_1.Router)();
+exports.olistAuthRouter = olistAuthRouter;
+olistAuthRouter.get('/auth/olist', olistAuthController_1.requestOlistAuthorization);
+olistAuthRouter.get('/callback/olist', olistAuthController_1.getOlistTokens);
+olistAuthRouter.post('/olist-refresh-token', olistAuthController_1.refreshOlistAccessToken);
+olistAuthRouter.post('/createOlistProduct', olistCreateProductController_1.createOlistProduct);

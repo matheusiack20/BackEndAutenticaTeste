@@ -1,0 +1,25 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const blingAuth_routes_1 = require("./blingAuth.routes");
+const olistAuth_routes_1 = require("./olistAuth.routes");
+const conversionAPIFacebook_routes_1 = require("./conversionAPIFacebook.routes");
+const generateTitleAndDescription_routes_1 = require("./generateTitleAndDescription.routes");
+const cors_1 = __importDefault(require("cors"));
+const createProduct_routes_1 = require("./createProduct.routes");
+const getProducts_routes_1 = require("./getProducts.routes");
+const getCategoryShop_routes_1 = require("./getCategoryShop.routes");
+const router = (0, express_1.Router)();
+exports.router = router;
+router.use((0, cors_1.default)());
+router.use(blingAuth_routes_1.blingAuthRouter);
+router.use(olistAuth_routes_1.olistAuthRouter);
+router.use('/createProduct', createProduct_routes_1.createProductRoute);
+router.use('/generateTitleAndDescription', generateTitleAndDescription_routes_1.generateTitleAndDescription);
+router.use('/getProducts', getProducts_routes_1.getProducts);
+router.use('/getCategory', getCategoryShop_routes_1.getCategory);
+router.use(conversionAPIFacebook_routes_1.sendEventConversionRouter);

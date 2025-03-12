@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="20887ef2-a0d5-40a8-b933-1b42ca5fb6e0" name="Changes" comment="Update session logging to display cookies instead of session data">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Payments/controllers/plansController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Payments/controllers/plansController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/Payments/services/pagarmeService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/Payments/services/pagarmeService.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "VitorMap"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MAP-MARKETPLACES/SaaS-CreateAdsWithAI-BackEnd.git",
+    "accountId": "3c0dc98c-f773-44aa-a943-aa15e7e73f0c"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2u86M9AwzbmWeDmMp8DOgPBLoor" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Users/vitorsoares/Library/Mobile Documents/com~apple~CloudDocs/Map Marketplaces/AnunciAI/SaaS-CreateAdsWithAI-BackEnd/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.25659.40" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20887ef2-a0d5-40a8-b933-1b42ca5fb6e0" name="Changes" comment="Update session logging to display cookies instead of session data" />
+      <created>1741617805840</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741617805840</updated>
+      <workItem from="1741617808502" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/app.js" />
+        <option value="$PROJECT_DIR$/src/server.js" />
+        <option value="$PROJECT_DIR$/src/lib/cloudflare.js" />
+        <option value="$PROJECT_DIR$/src/types/ITitleAndDescription.js" />
+        <option value="$PROJECT_DIR$/src/types/GenerativeTypes.js" />
+        <option value="$PROJECT_DIR$/src/types/blingAuth.js" />
+        <option value="$PROJECT_DIR$/src/types/GenerativeContentService.js" />
+        <option value="$PROJECT_DIR$/src/utils/requestCounter.js" />
+        <option value="$PROJECT_DIR$/src/config/database.js" />
+        <option value="$PROJECT_DIR$/src/models/User.js" />
+        <option value="$PROJECT_DIR$/src/routes/webhookRoutes.js" />
+        <option value="$PROJECT_DIR$/src/routes/conversionAPIFacebook.routes.js" />
+        <option value="$PROJECT_DIR$/src/routes/getProducts.routes.js" />
+        <option value="$PROJECT_DIR$/src/routes/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/plansRoutes.js" />
+        <option value="$PROJECT_DIR$/src/routes/createProduct.routes.js" />
+        <option value="$PROJECT_DIR$/src/routes/olistAuth.routes.js" />
+        <option value="$PROJECT_DIR$/src/routes/generateTitleAndDescription.routes.js" />
+        <option value="$PROJECT_DIR$/src/routes/blingAuth.routes.js" />
+        <option value="$PROJECT_DIR$/src/routes/getCategoryShop.routes.js" />
+        <option value="$PROJECT_DIR$/src/modules/AuthUser/Controllers/authController.js" />
+        <option value="$PROJECT_DIR$/src/modules/AuthUser/Controllers/protectedRoutes.js" />
+        <option value="$PROJECT_DIR$/src/modules/Payments/services/pagarmeService.js" />
+        <option value="$PROJECT_DIR$/src/modules/Payments/controllers/plansController.js" />
+        <option value="$PROJECT_DIR$/src/modules/blingAuth/services/blingAuthService.js" />
+        <option value="$PROJECT_DIR$/src/modules/blingAuth/controllers/blingAuthController.js" />
+        <option value="$PROJECT_DIR$/src/modules/olistAuth/services/olistAuthService.js" />
+        <option value="$PROJECT_DIR$/src/modules/olistAuth/controllers/olistAuthController.js" />
+        <option value="$PROJECT_DIR$/src/modules/getProducts/services/GetProductsService.js" />
+        <option value="$PROJECT_DIR$/src/modules/getProducts/controllers/GetProductsController.js" />
+        <option value="$PROJECT_DIR$/src/modules/ConversionAPI/services/ConversionAPIService.js" />
+        <option value="$PROJECT_DIR$/src/modules/ConversionAPI/controllers/ConversionAPIController.js" />
+        <option value="$PROJECT_DIR$/src/modules/getTopSellers/services/GetTopSellersInfoService.js" />
+        <option value="$PROJECT_DIR$/src/modules/getCategoryShop/services/GetCategoryShopService.js" />
+        <option value="$PROJECT_DIR$/src/modules/getCategoryShop/controllers/GetCategoryShopController.js" />
+        <option value="$PROJECT_DIR$/src/modules/blingCreateProduct/controllers/blingCreateProduct.js" />
+        <option value="$PROJECT_DIR$/src/modules/olistCreateProduct/controllers/olistCreateProductController.js" />
+        <option value="$PROJECT_DIR$/src/modules/generateTitleAndDescription/services/GenerativeContentService.js" />
+        <option value="$PROJECT_DIR$/src/modules/generateTitleAndDescription/controllers/GenerateTitleAndDescriptonController.js" />
+      </list>
+    </option>
+  </component>
+</project>
