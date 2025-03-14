@@ -1,13 +1,24 @@
-import mongoose from 'mongoose';
+/**
+ * Este arquivo NÃO cria um modelo Mongoose.
+ * Ele apenas define a interface para os tipos de dados sem persistência.
+ * 
+ * O armazenamento é feito completamente em memória através de um Map no controller,
+ * sem persistir dados no banco MongoDB.
+ */
 
-const tokenSchema = new mongoose.Schema({
-  tokenId: { type: String, required: true, unique: true },
-  planId: { type: String, required: true },
-  planName: { type: String, required: true },
-  planAmount: { type: Number, required: true },
-  planInterval: { type: String, required: true },
-  planIntervalCount: { type: Number, required: true },
-  planDescription: { type: String, required: true },
-}, { timestamps: true });
+// Interface para o token em memória
+export interface TokenData {
+  tokenId: string;
+  planId: string;
+  planName: string;
+  planAmount: number | string;
+  planInterval: string;
+  planIntervalCount: number | string;
+  planDescription: string;
+  createdAt: Date;
+  expiresAt: Date;
+}
 
-export const TokenModel = mongoose.model('Token', tokenSchema);
+// NÃO exportar um modelo Mongoose, apenas a interface
+// Não há persistência no banco de dados
+export type TokenModel = TokenData;

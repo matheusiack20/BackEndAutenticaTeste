@@ -1,0 +1,65 @@
+/**
+ * Comando direto para o shell do MongoDB para corrigir o usuário Pedro
+ * Para executar: 
+ * 1. Copie todo o conteúdo deste arquivo
+ * 2. Abra o MongoDB Shell conectado ao seu banco
+ * 3. Cole e execute o código
+ */
+
+// Primeiro encontrar o usuário (por email ou pegar o primeiro)
+let user;
+user = db.users.findOne({ email: "pedro.henrique_maciel@hotmail.com" });
+
+if (!user) {
+  // Tentar pegar o primeiro usuário se houver apenas um
+  const count = db.users.countDocuments();
+  if (count === 1) {
+    user = db.users.findOne();
+    print("Usuário Pedro não encontrado pelo email. Usando o único usuário disponível.");
+  } else {
+    print("Múltiplos usuários encontrados e nenhum com o email específico do Pedro.");
+    // Listar os usuários disponíveis
+    db.users.find({}, {_id: 1, email: 1, name: 1}).forEach(u => printjson(u));
+    quit();
+  }
+}
+
+if (!user) {
+  print("Nenhum usuário encontrado. Operação abortada.");
+  quit();
+}
+
+// Mostrar detalhes do usuário antes da atualização
+print("\n=== USUÁRIO ENCONTRADO ===");
+print(`ID: ${user._id}`);
+print(`Nome: ${user.name}`);
+print(`Email: ${user.email}`);
+print(`Status atual: ${user.subscription_status || 'Nenhum'}`);
+print(`Plano atual: ${user.plan || 'Nenhum'}`);
+
+// Atualizar o usuário com os valores corretos
+const result = db.users.updateOne(
+  { _id: user._id },
+  { $set: {
+    plan: 1, // Plano Iniciante (1)
+    plan_id: "plan_axj7YDPiVfmlY6k0",
+    subscription_id: "sub_M8dADekF9IxEWbX5",
+    plan_name: "Iniciante",
+    plan_interval: "month",
+    plan_description: "Iniciante",
+    subscription_status: "paid",
+    subscription_price: 5770,
+    subscription_created_at: new Date(),
+    subscription_expires_at: new Date(new Date().setMonth(new Date().getMonth() + 1))
+  }}
+);
+
+print("\n=== RESULTADO DA ATUALIZAÇÃO ===");
+printjson(result);
+
+// Verificar usuário após atualização
+const updatedUser = db.users.findOne({ _id: user._id });
+print("\n=== USUÁRIO APÓS ATUALIZAÇÃO ===");
+print(`Status: ${updatedUser.subscription_status}`);
+print(`Plano: ${updatedUser.plan}`);
+print(`ID da assinatura: ${updatedUser.subscription_id}`);
